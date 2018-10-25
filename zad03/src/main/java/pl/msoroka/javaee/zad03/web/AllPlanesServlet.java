@@ -6,6 +6,9 @@ import pl.msoroka.javaee.zad03.service.StorageService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/all-planes")
 public class AllPlanesServlet extends HttpServlet {
 
-	StorageService ss = new StorageService();
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -29,12 +31,22 @@ public class AllPlanesServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
+		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+
+
 		String producer = request.getParameter("producer");
-//		Date productionDate = new Date(request.getParameter("productionDate"));
-		Date productionDate = new Date(1996,01,01);
+		Date productionDate = null;
+		try {
+			productionDate = formatter.parse(request.getParameter("productionDate"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		double combustion = Double.parseDouble(request.getParameter("combustion"));
 		boolean vipStatus = Boolean.parseBoolean(request.getParameter("vipStatus"));
-		
+
+		StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
+
+
 		Plane newPlane = new Plane(producer, productionDate, combustion, vipStatus);
 
 		ss.add(newPlane);
@@ -52,5 +64,12 @@ public class AllPlanesServlet extends HttpServlet {
 
 		out.append("</body></html>");
 		out.close();
+	}
+
+	@Override
+	public void init() throws ServletException {
+
+		// application context
+		getServletContext().setAttribute("storage_service", new StorageService());
 	}
 }
