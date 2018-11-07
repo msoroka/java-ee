@@ -21,55 +21,40 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/all-planes")
 public class AllPlanesServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		response.setContentType("text/html");
-		
-		PrintWriter out = response.getWriter();
+    private static final long serialVersionUID = 1L;
 
-		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
+        response.setContentType("text/html");
 
-		String producer = request.getParameter("producer");
-		Date productionDate = null;
-		try {
-			productionDate = formatter.parse(request.getParameter("productionDate"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		double combustion = Double.parseDouble(request.getParameter("combustion"));
-		boolean vipStatus = Boolean.parseBoolean(request.getParameter("vipStatus"));
+        PrintWriter out = response.getWriter();
 
-		StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
+        StorageService ss = (StorageService) getServletContext().getAttribute("storage_service");
 
+        List<Plane> allPlanes = ss.getAllPlanes();
 
-		Plane newPlane = new Plane(producer, productionDate, combustion, vipStatus);
+        out.append("<html><body><h2>All Planes:</h2>");
 
-		ss.add(newPlane);
+        for (Plane plane: allPlanes) {
+            out.append("<p>id: " + plane.getId() + "</p>");
+            out.append("<p>Producer: " + plane.getProducer() + "</p>");
+            out.append("<p>Production date: " + plane.getProductionDate() + "</p>");
+            out.append("<p>Combustion: " + plane.getCombustion() + "</p>");
+            out.append("<p>Price: " + plane.getPrice() + "</p>");
+            out.append("<p>Quantity: " + plane.getQuantity() + "</p>");
+            out.append("<p>Vip Status: " + plane.isVipStatus() + "</p><br>");
+        }
 
-		List<Plane> allPlanes = ss.getAllPlanes();
+        out.append("</body></html>");
+        out.close();
+    }
 
-		out.append("<html><body><h2>All Planes:</h2>");
+    @Override
+    public void init() throws ServletException {
 
-		for (Plane plane: allPlanes) {
-			out.append("<p>Producer: " + plane.getProducer() + "</p>");
-			out.append("<p>Production date: " + plane.getProductionDate() + "</p>");
-			out.append("<p>Combustion: " + plane.getCombustion() + "</p>");
-			out.append("<p>Vip Status: " + plane.isVipStatus() + "</p><br>");
-		}
-
-		out.append("</body></html>");
-		out.close();
-	}
-
-	@Override
-	public void init() throws ServletException {
-
-		// application context
-		getServletContext().setAttribute("storage_service", new StorageService());
-	}
+        // application context
+        getServletContext().setAttribute("storage_service", new StorageService());
+    }
 }

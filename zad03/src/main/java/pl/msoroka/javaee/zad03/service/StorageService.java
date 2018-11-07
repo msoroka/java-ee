@@ -7,11 +7,18 @@ import pl.msoroka.javaee.zad03.domain.Plane;
 
 public class StorageService {
 
+    private int id = 0;
     private List<Plane> db = new ArrayList<Plane>();
 
     public void add(Plane plane) {
-        Plane newPlane = new Plane(plane.getProducer(), plane.getProductionDate(), plane.getCombustion(), plane.isVipStatus());
+        Plane newPlane = new Plane(plane.getId(), plane.getProducer(), plane.getProductionDate(), plane.getCombustion(), plane.isVipStatus(), plane.getPrice(), plane.getQuantity());
         db.add(newPlane);
+    }
+
+    public int getId() {
+        id++;
+
+        return this.id;
     }
 
     public List<Plane> getAllPlanes() {

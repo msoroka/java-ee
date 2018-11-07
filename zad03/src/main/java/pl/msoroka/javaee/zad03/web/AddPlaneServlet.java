@@ -22,10 +22,12 @@ public class AddPlaneServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body><h2>Add plane:</h2>" +
-				"<form action='all-planes'>" +
+				"<form action='store-plane'>" +
 				"Producer: <input type='text' name='producer' /> <br />" +
 				"Production date: <input type='text' name='productionDate' /> <br />" +
 				"Combustion: <input type='text' name='combustion' /> <br />" +
+				"Price: <input type='text' name='price' /> <br />" +
+				"Quantity: <input type='number' name='quantity' /> <br />" +
 				"Vip Status: <select name='vipStatus'>" +
 				"<option value='true'>Yes</option>" +
 				"<option value='false'>No</option>" +
