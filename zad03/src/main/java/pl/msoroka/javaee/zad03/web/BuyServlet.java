@@ -42,6 +42,8 @@ public class BuyServlet extends HttpServlet {
             removePlaneQuantity(plane);
         }
 
+        session.removeAttribute("session_cart");
+
         out.append("<a href='zad03'>Go back to menu</a><br>");
         out.append("</body></html>");
         out.close();
