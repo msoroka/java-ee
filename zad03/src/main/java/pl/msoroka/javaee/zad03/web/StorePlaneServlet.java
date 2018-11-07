@@ -49,7 +49,6 @@ public class StorePlaneServlet extends HttpServlet {
 
 		int id = ss.getId();
 
-
 		Plane newPlane = new Plane(id, producer, productionDate, combustion, vipStatus, price, quantity);
 
 		ss.add(newPlane);
@@ -68,6 +67,8 @@ public class StorePlaneServlet extends HttpServlet {
 			out.append("<p>Vip Status: " + plane.isVipStatus() + "</p><br>");
 		}
 
+		out.append("<a href='add-plane'>Add another plane</a><br>");
+		out.append("<a href='all-planes'>Go to store</a>");
 		out.append("</body></html>");
 		out.close();
 	}

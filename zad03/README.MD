@@ -5,9 +5,5 @@
 <li>Spis asortymentu</li>
 <li>Nadanie id produktom</li>
 <li>Dodanie pól ilość i cena</li>
-</ul>
-<p>Todo:</p>
-<ul>
 <li>Stworzenie koszyka i podsumowania</li>
 <li>Odjęcie ilości dostępnych samolotów po dokonanej sprzedaży</li>
-</ul>

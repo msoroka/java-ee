@@ -26,7 +26,7 @@ public class IndexServlet extends HttpServlet {
                 "<ul>" +
                 "<li><a href='add-plane'>Add Plane</a></li>" +
                 "<li><a href='all-planes'>List of Planes</a></li>" +
-                "<li><a href=''></a></li>" +
+                "<li><a href='cart'>Cart</a></li>" +
                 "</ul>" +
                 "</body></html>");
         out.close();

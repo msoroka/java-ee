@@ -38,6 +38,8 @@ public class AllPlanesServlet extends HttpServlet {
         out.append("<html><body><h2>All Planes:</h2>");
 
         for (Plane plane: allPlanes) {
+            out.append("<form action='add-to-cart'>" );
+            out.append("<input type='hidden' name='id' value='" + plane.getId() +"'/>");
             out.append("<p>id: " + plane.getId() + "</p>");
             out.append("<p>Producer: " + plane.getProducer() + "</p>");
             out.append("<p>Production date: " + plane.getProductionDate() + "</p>");
@@ -45,6 +47,8 @@ public class AllPlanesServlet extends HttpServlet {
             out.append("<p>Price: " + plane.getPrice() + "</p>");
             out.append("<p>Quantity: " + plane.getQuantity() + "</p>");
             out.append("<p>Vip Status: " + plane.isVipStatus() + "</p><br>");
+            out.append("<input type='submit' value=' Add to Cart' />");
+            out.append("</form>");
         }
 
         out.append("</body></html>");
