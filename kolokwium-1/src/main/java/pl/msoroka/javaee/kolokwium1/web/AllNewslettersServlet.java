@@ -28,6 +28,7 @@ public class AllNewslettersServlet extends HttpServlet {
         List<Newsletter> allNewsletters = ns.getAllNewsletters();
 
         out.append("<html><body><h2>Wszystkie newslettery:</h2>");
+        out.append("<p>Tutaj zapisane są wszystkie dodane newslettery, ale w sesji jest tylko jeden</p><br>");
 
         for (Newsletter newsletter: allNewsletters) {
                 out.append("<form action='deleteNewsletter'>");
