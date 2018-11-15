@@ -23,33 +23,38 @@ public class SignNewsletterServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
+        NewsletterService ns = (NewsletterService)getServletContext().getAttribute("app_news");
+
+
         Newsletter sNewsletter = null;
         String name = request.getParameter("name");
         String from = request.getParameter("from");
         String to = request.getParameter("to");
         String frequency = request.getParameter("frequency");
         String selectedSubjects = "";
+
         for (String subject : request.getParameterValues("subjects")) {
             selectedSubjects += subject + " ";
         }
 
         if (session.getAttribute("sess_news") == null) {
             sNewsletter = new Newsletter(name, from, to, frequency, selectedSubjects);
+            ns.addNewsletter(sNewsletter);
         } else {
             sNewsletter = (Newsletter) session.getAttribute("sess_news");
+            ns.removeNewsletter(sNewsletter);
 
-            sNewsletter.setName(name);
-            sNewsletter.setFrom(from);
-            sNewsletter.setTo(to);
-            sNewsletter.setFrequency(frequency);
-            sNewsletter.setSubjects(selectedSubjects);
+            sNewsletter = new Newsletter(name, from, to, frequency, selectedSubjects);
+
+//            sNewsletter.setName(name);
+//            sNewsletter.setFrom(from);
+//            sNewsletter.setTo(to);
+//            sNewsletter.setFrequency(frequency);
+//            sNewsletter.setSubjects(selectedSubjects);
+
+            ns.addNewsletter(sNewsletter);
         }
 
-
-
-        NewsletterService ns = (NewsletterService)getServletContext().getAttribute("app_news");
-
-        ns.addNewsletter(sNewsletter);
 
         session.setAttribute("sess_news", sNewsletter);
 

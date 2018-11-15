@@ -18,6 +18,7 @@
 <p>Wybrane tematy: ${sess_news.subjects}</p>
 
 <a href="newsletter.jsp"><button>Zmień ustawienia</button></a>
+<a href="newsletters"><button>Wszystkie newslettery</button></a>
 
 </body>
 </html>

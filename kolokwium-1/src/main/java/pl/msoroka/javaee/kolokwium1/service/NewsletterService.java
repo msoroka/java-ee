@@ -16,4 +16,8 @@ public class NewsletterService {
     public List<Newsletter> getAllNewsletters() {
         return db;
     }
+
+    public void removeNewsletter(Newsletter newsletter) {
+        db.remove(newsletter);
+    }
 }
