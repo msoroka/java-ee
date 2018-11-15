@@ -5,31 +5,30 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Plane shop</title>
+    <title>Newsletter</title>
 </head>
 <body>
-<%--<jsp:useBean id="user_session" class="pl.msoroka.javaee.kolokwium1.domain.User" scope="session" />--%>
 
 <h1>Witaj w mojej aplikacji, zapisz się do newslettera:</h1>
 <form action="sign-newsletter">
     <label for="name">Nick:</label>
-    <input type="text" name="name" id="name" required="required"><br>
+    <input type="text" name="name" id="name" required="required" value="${sess_news.name}"><br>
 
     <label for="from">Od daty:</label>
-    <input type="text" name="from" id="from" required="required"><br>
+    <input type="text" name="from" id="from" required="required" value="${sess_news.from}"><br>
 
     <label for="to">Do daty:</label>
-    <input type="text" name="to" id="to" required="required"><br>
+    <input type="text" name="to" id="to" required="required" value="${sess_news.to}"><br>
 
     <br><label>Częstotliwość:</label><br>
-    <input type="radio" name="frequency" value="day">Codziennie<br>
-    <input type="radio" name="frequency" value="week">Co tydzień<br>
-    <input type="radio" name="frequency" value="month">Co miesiąc<br>
+    <input type="radio" name="frequency" value="codziennie">Codziennie<br>
+    <input type="radio" name="frequency" value="co tydzien">Co tydzień<br>
+    <input type="radio" name="frequency" value="co miesiac">Co miesiąc<br>
 
     <br><label >Twoje zainteresowania:</label><br>
-    <input type="checkbox" name="subjects" value="planes">Samoloty<br>
-    <input type="checkbox" name="subjects" value="cars">Samochody<br>
-    <input type="checkbox" name="subjects" value="socks">Skarpetki<br><br>
+    <input type="checkbox" name="subjects" value="samoloty">Samoloty<br>
+    <input type="checkbox" name="subjects" value="samochody">Samochody<br>
+    <input type="checkbox" name="subjects" value="skarpetki">Skarpetki<br><br>
 
     <input type="submit" value="Zapisz się">
 </form>

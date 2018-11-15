@@ -10,6 +10,7 @@ public class NewsletterService {
 
     public void addNewsletter(Newsletter newsletter) {
         Newsletter newNewsletter = new Newsletter(newsletter.getName(), newsletter.getFrom(), newsletter.getTo(), newsletter.getFrequency(), newsletter.getSubjects());
+        db.add(newNewsletter);
     }
 
     public List<Newsletter> getAllNewsletters() {

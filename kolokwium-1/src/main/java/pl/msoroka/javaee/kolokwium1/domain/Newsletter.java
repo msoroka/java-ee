@@ -1,15 +1,13 @@
 package pl.msoroka.javaee.kolokwium1.domain;
 
-import java.util.Date;
-
 public class Newsletter {
     private String name;
-    private Date from;
-    private Date to;
+    private String from;
+    private String to;
     private String frequency;
     private String subjects;
 
-    public Newsletter(String name, Date from, Date to, String frequency, String subjects) {
+    public Newsletter(String name, String from, String to, String frequency, String subjects) {
         this.name = name;
         this.from = from;
         this.to = to;
@@ -25,19 +23,19 @@ public class Newsletter {
         this.name = name;
     }
 
-    public Date getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public Date getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(String to) {
         this.to = to;
     }
 
