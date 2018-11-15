@@ -1,1 +1,2 @@
-Kolokwium 1
+Kolokwium 1<br>
+Adres: /kolokwium1/newsletter.jsp
