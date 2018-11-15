@@ -12,7 +12,7 @@
 
 <h1>Witaj w mojej aplikacji, zapisz się do newslettera:</h1>
 <form action="sign-newsletter">
-    <label for="name">Imię:</label>
+    <label for="name">Nick:</label>
     <input type="text" name="name" id="name" required="required"><br>
 
     <label for="from">Od daty:</label>
@@ -27,9 +27,9 @@
     <input type="radio" name="frequency" value="month">Co miesiąc<br>
 
     <br><label >Twoje zainteresowania:</label><br>
-    <input type="checkbox" name="planes">Samoloty<br>
-    <input type="checkbox" name="cars">Samochody<br>
-    <input type="checkbox" name="socks">Skarpetki<br><br>
+    <input type="checkbox" name="subjects" value="planes">Samoloty<br>
+    <input type="checkbox" name="subjects" value="cars">Samochody<br>
+    <input type="checkbox" name="subjects" value="socks">Skarpetki<br><br>
 
     <input type="submit" value="Zapisz się">
 </form>
