@@ -8,7 +8,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 @Path("/dog")
 @Singleton
