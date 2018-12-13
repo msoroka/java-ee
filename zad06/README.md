@@ -1,2 +1,2 @@
-# restejbjpa
-Demo project for Java EE Technologies course.
+# Java EE zad06
+CRUD for planes with postman collection
