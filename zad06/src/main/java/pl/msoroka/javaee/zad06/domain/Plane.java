@@ -2,6 +2,8 @@ package pl.msoroka.javaee.zad06.domain;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement
 @Entity
@@ -16,7 +18,7 @@ public class Plane {
     private int capacity;
     private double combustion;
 
-    private Producer producer;
+    private List<Producer> producers = new ArrayList<>();
 
     public Plane(String name, String produceDate, int capacity, double combustion) {
         this.name = name;
@@ -70,12 +72,12 @@ public class Plane {
         this.combustion = combustion;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public Producer getProducer() {
-        return producer;
+    @ManyToMany(mappedBy = "planes", fetch = FetchType.EAGER)
+    public List<Producer> getProducers() {
+        return producers;
     }
 
-    public void setProducer(Producer producer) {
-        this.producer = producer;
+    public void setProducers(List<Producer> producers) {
+        this.producers = producers;
     }
 }

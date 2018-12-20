@@ -10,7 +10,7 @@ import java.util.List;
 @Stateless
 public class PlaneManager {
 
-    @PersistenceContext(unitName= "demoPU")
+    @PersistenceContext
     private EntityManager em;
 
     public void addPlane(Plane plane) {

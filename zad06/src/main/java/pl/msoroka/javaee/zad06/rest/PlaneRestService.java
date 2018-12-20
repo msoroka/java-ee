@@ -1,12 +1,9 @@
 package pl.msoroka.javaee.zad06.rest;
 
 import pl.msoroka.javaee.zad06.domain.Plane;
-import pl.msoroka.javaee.zad06.domain.Producer;
 import pl.msoroka.javaee.zad06.service.PlaneManager;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -15,16 +12,13 @@ import java.util.List;
 @Path("plane")
 public class PlaneRestService {
 
-    @Inject
+    @EJB
     PlaneManager pm;
 
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addPlane(Plane plane) {
-        Producer producer = new Producer("Airbus", 1920);
-        plane.setProducer(producer);
-
         pm.addPlane(plane);
 
         return Response.status(Response.Status.CREATED).build();
@@ -74,4 +68,6 @@ public class PlaneRestService {
         pm.deleteAllPlanes();
         return Response.status(200).build();
     }
+
+
 }
