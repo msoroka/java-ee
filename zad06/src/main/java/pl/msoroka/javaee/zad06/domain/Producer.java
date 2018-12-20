@@ -62,12 +62,12 @@ public class Producer {
         this.planes = planes;
     }
 
-    public void addPlanes(List<Plane> planes) {
-
-        this.setPlanes(planes);
-
-        for (Plane plane: planes){
-            plane.getProducers().add(this);
-        }
-    }
+//    public void addPlanes(List<Plane> planes) {
+//
+//        this.setPlanes(planes);
+//
+//        for (Plane plane: planes){
+//            plane.getProducers().add(this);
+//        }
+//    }
 }

@@ -1,5 +1,6 @@
 package pl.msoroka.javaee.zad06.rest;
 
+import pl.msoroka.javaee.zad06.domain.Plane;
 import pl.msoroka.javaee.zad06.domain.Producer;
 import pl.msoroka.javaee.zad06.service.ProducerManager;
 
@@ -7,6 +8,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("producer")
@@ -19,6 +21,18 @@ public class ProducerRestService {
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProducer(Producer producer) {
+        Plane plane1 = new Plane("A330", "2018-01-05", 125, 25.5);
+        Plane plane2 = new Plane("A333", "2017-02-04", 155, 35.5);
+        Plane plane3 = new Plane("A350", "2016-03-03", 175, 45.5);
+        Plane plane4 = new Plane("A370", "2015-04-02", 250, 55.5);
+
+        List<Plane> planes = new ArrayList<>();
+        planes.add(plane1);
+        planes.add(plane2);
+        planes.add(plane3);
+        planes.add(plane4);
+
+        producer.setPlanes(planes);
         pm.addProducer(producer);
 
         return Response.status(Response.Status.CREATED).build();
@@ -66,6 +80,5 @@ public class ProducerRestService {
         pm.deleteAllProducers();
         return Response.status(200).build();
     }
-
 
 }

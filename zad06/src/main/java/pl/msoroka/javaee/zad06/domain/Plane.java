@@ -71,13 +71,13 @@ public class Plane {
     public void setCombustion(double combustion) {
         this.combustion = combustion;
     }
-
-    @ManyToMany(mappedBy = "planes", fetch = FetchType.EAGER)
-    public List<Producer> getProducers() {
-        return producers;
-    }
-
-    public void setProducers(List<Producer> producers) {
-        this.producers = producers;
-    }
+//
+//    @ManyToMany(mappedBy = "planes", fetch = FetchType.EAGER)
+//    public List<Producer> getProducers() {
+//        return producers;
+//    }
+//
+//    public void setProducers(List<Producer> producers) {
+//        this.producers = producers;
+//    }
 }
