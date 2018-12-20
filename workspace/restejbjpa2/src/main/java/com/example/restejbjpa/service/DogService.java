@@ -14,9 +14,17 @@ public class DogService {
     EntityManager em;
 
     public void addDog(Dog dog) {
-
+        //magic start
         em.persist(dog);
 
+        //em.detach(dog); // odłączy nasłuchwianie
+        //dog.setName("Cywil"); //zadziała bo są nasłuchiwane zmiany
+
+        //magic stop
     }
 
+
+    public Dog findDogById(long id) {
+        return em.find(Dog.class, id);
+    }
 }

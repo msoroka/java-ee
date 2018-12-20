@@ -46,7 +46,7 @@ public class Dog {
         this.yob = yob;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne //(cascade = CascadeType.ALL)
     public Person getOwner() {
         return owner;
     }
