@@ -23,16 +23,15 @@ public class DogRestService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addDog(Dog dog) {
-
-        Person person = new Person("Jan", "Kowalski", 1990);
-
-        pm.addPerson(person);
-
-        dog.setOwner(person);
+//        Person person = new Person("Jan", "Kowalski", 1990);
+//
+//        pm.addPerson(person);
+//
+//        dog.setOwner(person);
 
         dm.addDog(dog);
 
-        dog.setName("TEST"); // nie zadziała
+//        dog.setName("TEST"); // nie zadziała
         return Response.status(Response.Status.CREATED).build();
     }
 

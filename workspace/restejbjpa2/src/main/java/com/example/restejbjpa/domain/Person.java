@@ -3,17 +3,12 @@ package com.example.restejbjpa.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@NamedQueries({
+    @NamedQuery(name = "person.getDogsOfPerson", query = "Select d from Person p JOIN p.dogs d where p.id = :pId")
+})
 @Entity
 public class Person {
 
@@ -24,6 +19,8 @@ public class Person {
     private String lastName;
 
     private int yob;
+
+    private List<Dog> dogs;
 
     public Person(String firstName, String lastName, int yob) {
         this.firstName = firstName;
@@ -36,6 +33,9 @@ public class Person {
         this.id = id;
         this.firstName = firstName;
         this.yob = yob;
+    }
+
+    public Person() {
     }
 
     @Id
@@ -72,5 +72,12 @@ public class Person {
         this.lastName = lastName;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public List<Dog> getDogs() {
+        return dogs;
+    }
 
+    public void setDogs(List<Dog> dogs) {
+        this.dogs = dogs;
+    }
 }

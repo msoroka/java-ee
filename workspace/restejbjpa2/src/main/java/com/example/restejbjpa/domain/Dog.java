@@ -10,7 +10,7 @@ public class Dog {
     private String name;
     private int yob;
 
-    private Person owner;
+//    private Person owner;
 
     public Dog(String name, int yob) {
         this.name = name;
@@ -46,12 +46,12 @@ public class Dog {
         this.yob = yob;
     }
 
-    @ManyToOne //(cascade = CascadeType.ALL)
-    public Person getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Person owner) {
-        this.owner = owner;
-    }
+//    @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    public Person getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(Person owner) {
+//        this.owner = owner;
+//    }
 }

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.example.restejbjpa.domain.Car;
+import com.example.restejbjpa.domain.Dog;
 import com.example.restejbjpa.domain.Person;
 
 @Stateless
@@ -39,6 +40,19 @@ public class PersonManager {
 	
 	public void clearPersons(){
 		em.createNamedQuery("person.deleteAll").executeUpdate();
+	}
+
+	public List<Dog> getDogsOfPerson(Long id) {
+//		Person person = em.find(Person.class, id);
+
+//		List<Dog> dogs = person.getDogs();
+
+		//for lazy loading
+//		System.out.println(dogs.size());
+
+        List<Dog> dogs = em.createNamedQuery("person.getDogsOfPerson").setParameter("pId", id).getResultList();
+
+		return dogs;
 	}
 
 }

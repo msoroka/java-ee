@@ -3,6 +3,7 @@ package com.example.restejbjpa.rest;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -15,12 +16,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.restejbjpa.domain.Dog;
 import com.example.restejbjpa.domain.Person;
+import com.example.restejbjpa.service.PersonManager;
 
 @Path("person")
-@Stateless
-public class PersonRestService {	
-	
+public class PersonRestService {
+
+	@Inject
+	PersonManager pm;
+
 	@PersistenceContext
 	EntityManager em;
 	
@@ -28,7 +33,7 @@ public class PersonRestService {
 	@Path("/{personId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Person getPerson(@PathParam("personId") Long id){
-		return em.find(Person.class, id);
+		return pm.getPerson(id);
 	}
 	
 	@GET
@@ -38,12 +43,20 @@ public class PersonRestService {
 	public List<Person> getAllPersons(){
 		return em.createNamedQuery("person.getAll").getResultList();
 	}
+
+    @GET
+    @Path("/{personId}/dogs")
+    @Produces(MediaType.APPLICATION_JSON)
+    @SuppressWarnings("unchecked")
+    public List<Dog> getDogsOfPerson(@PathParam("personId") Long id){
+        return pm.getDogsOfPerson(id);
+    }
 	
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addPerson(Person person){
-		em.persist(person);
+		pm.addPerson(person);
 		return Response.status(201).entity("Person").build(); 
 	}
 	
