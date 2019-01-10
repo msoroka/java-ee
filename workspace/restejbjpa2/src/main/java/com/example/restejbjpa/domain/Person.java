@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @NamedQueries({
-    @NamedQuery(name = "person.getDogsOfPerson", query = "Select d from Person p JOIN p.dogs d where p.id = :pId")
+    @NamedQuery(name = "person.getCarsOfPerson", query = "Select c from Person p JOIN p.cars c where p.id = :pId")
 })
 @Entity
 public class Person {
@@ -20,7 +20,9 @@ public class Person {
 
     private int yob;
 
-    private List<Dog> dogs;
+//    private List<Dog> dogs;
+
+    private List<Car> cars = new ArrayList<>();
 
     public Person(String firstName, String lastName, int yob) {
         this.firstName = firstName;
@@ -72,12 +74,29 @@ public class Person {
         this.lastName = lastName;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public List<Dog> getDogs() {
-        return dogs;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    public List<Dog> getDogs() {
+//        return dogs;
+//    }
+//
+//    public void setDogs(List<Dog> dogs) {
+//        this.dogs = dogs;
+//    }
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void setDogs(List<Dog> dogs) {
-        this.dogs = dogs;
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public void addCars(List<Car> cars){
+        this.cars = cars;
+
+        for(Car car: cars) {
+            car.getOwners().add(this);
+        }
     }
 }

@@ -3,12 +3,7 @@ package com.example.restejbjpa.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -22,6 +17,8 @@ public class Car {
 	private String model;
 	
 //	private List<Person> owners = new ArrayList<>();
+
+	private List<Person> owners = new ArrayList<>();
 	
 	public Car() {
 	}
@@ -58,13 +55,12 @@ public class Car {
 		this.model = model;
 	}
 
-//	@ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER)
-//	public List<Person> getOwners() {
-//		return owners;
-//	}
-//
-//	public void setOwners(List<Person> owners) {
-//		this.owners = owners;
-//	}
-//
+    @ManyToMany(mappedBy = "cars")
+    public List<Person> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(List<Person> owners) {
+        this.owners = owners;
+    }
 }

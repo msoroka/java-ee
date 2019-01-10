@@ -30,27 +30,21 @@ public class PersonManager {
 
 	
 	@SuppressWarnings("unchecked")
-	public List<Person> getAllPersons(){
-		return em.createNamedQuery("person.getAll").getResultList();
-	}
+//	public List<Person> getAllPersons(){
+//		return em.createNamedQuery("person.getAll").getResultList();
+//	}
 	
 	public void addPerson(Person person){
 		em.persist(person);		
 	}
 	
-	public void clearPersons(){
-		em.createNamedQuery("person.deleteAll").executeUpdate();
-	}
+//	public void clearPersons(){
+//		em.createNamedQuery("person.deleteAll").executeUpdate();
+//	}
 
-	public List<Dog> getDogsOfPerson(Long id) {
-//		Person person = em.find(Person.class, id);
-
-//		List<Dog> dogs = person.getDogs();
-
-		//for lazy loading
-//		System.out.println(dogs.size());
-
-        List<Dog> dogs = em.createNamedQuery("person.getDogsOfPerson").setParameter("pId", id).getResultList();
+	public List<Dog> getCarsOfPerson(Long id) {
+		System.out.println("Zapytanie nazwane do lazy loading");
+        List<Dog> dogs = em.createNamedQuery("person.getCarsOfPerson").setParameter("pId", id).getResultList();
 
 		return dogs;
 	}

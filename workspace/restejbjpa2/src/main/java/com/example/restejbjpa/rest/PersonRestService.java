@@ -1,5 +1,6 @@
 package com.example.restejbjpa.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -16,6 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.restejbjpa.domain.Car;
 import com.example.restejbjpa.domain.Dog;
 import com.example.restejbjpa.domain.Person;
 import com.example.restejbjpa.service.PersonManager;
@@ -35,22 +37,47 @@ public class PersonRestService {
 	public Person getPerson(@PathParam("personId") Long id){
 		return pm.getPerson(id);
 	}
-	
-	@GET
-	@Path("/")
-	@Produces(MediaType.APPLICATION_JSON)
-	@SuppressWarnings("unchecked")
-	public List<Person> getAllPersons(){
-		return em.createNamedQuery("person.getAll").getResultList();
-	}
 
-    @GET
-    @Path("/{personId}/dogs")
-    @Produces(MediaType.APPLICATION_JSON)
-    @SuppressWarnings("unchecked")
-    public List<Dog> getDogsOfPerson(@PathParam("personId") Long id){
-        return pm.getDogsOfPerson(id);
-    }
+	@GET
+	@Path("/manytomany")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response checkManyToMany(){
+		Person person = new Person("Jan", "Kowalski", 1990);
+
+		Car car1 = new Car("Fiat", "Uno");
+		Car car2 = new Car("Ford", "Focus");
+		Car car3 = new Car("Opel", "Astra");
+
+		List<Car> cars = new ArrayList<>();
+
+		cars.add(car1);
+		cars.add(car2);
+		cars.add(car3);
+
+		person.addCars(cars);
+
+		pm.addPerson(person);
+
+        System.out.println("@@@@ " + car1.getOwners().size());
+
+		return Response.ok().build();
+	}
+	
+//	@GET
+//	@Path("/")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@SuppressWarnings("unchecked")
+//	public List<Person> getAllPersons(){
+//		return em.createNamedQuery("person.getAll").getResultList();
+//	}
+//
+//    @GET
+//    @Path("/{personId}/dogs")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @SuppressWarnings("unchecked")
+//    public List<Dog> getDogsOfPerson(@PathParam("personId") Long id){
+//        return pm.getDogsOfPerson(id);
+//    }
 	
 	@POST
 	@Path("/")
@@ -67,10 +94,10 @@ public class PersonRestService {
 		return "REST Persons Service is running now!";
 	}
 	
-	@DELETE
-	public Response clearPersons(){
-		em.createNamedQuery("person.deleteAll").executeUpdate();
-		return Response.status(200).build();
-	}
+//	@DELETE
+//	public Response clearPersons(){
+//		em.createNamedQuery("person.deleteAll").executeUpdate();
+//		return Response.status(200).build();
+//	}
 
 }
