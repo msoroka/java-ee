@@ -6,6 +6,10 @@ import java.util.Date;
 
 @Entity
 @XmlRootElement
+@NamedQueries({
+        @NamedQuery(name = "plane.getAll", query = "Select p from Plane p"),
+        @NamedQuery(name = "plane.deleteAll", query = "Delete from Plane ")
+})
 public class Plane {
 
     private long id;
@@ -42,6 +46,7 @@ public class Plane {
         this.model = model;
     }
 
+    @Column(unique = true, nullable = false)
     public String getSideNumber() {
         return sideNumber;
     }
