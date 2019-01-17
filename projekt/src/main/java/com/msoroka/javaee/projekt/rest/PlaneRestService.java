@@ -30,6 +30,13 @@ public class PlaneRestService {
         return planeManager.getPlane(id);
     }
 
+    @GET
+    @Path("/side-number/{sideNumber}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Plane getPlaneBySideNumber(@PathParam("sideNumber") String sideNumber) {
+        return planeManager.getPlaneBySideNumber(sideNumber);
+    }
+
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)

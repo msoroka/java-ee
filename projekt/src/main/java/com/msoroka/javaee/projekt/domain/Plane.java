@@ -1,6 +1,11 @@
 package com.msoroka.javaee.projekt.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+import javax.swing.text.View;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
@@ -8,7 +13,8 @@ import java.util.Date;
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "plane.getAll", query = "Select p from Plane p"),
-        @NamedQuery(name = "plane.deleteAll", query = "Delete from Plane ")
+        @NamedQuery(name = "plane.deleteAll", query = "Delete from Plane"),
+        @NamedQuery(name = "plane.getBySideNumber", query = "SELECT p FROM Plane p WHERE p.sideNumber = :sideNumber")
 })
 public class Plane {
 
@@ -17,6 +23,9 @@ public class Plane {
     private String sideNumber;
     private Date produceDate;
     private int capacity;
+
+    @JsonBackReference
+    private Producer producer;
 
     public Plane(String model, String sideNumber, Date produceDate, int capacity) {
         this.model = model;
@@ -72,4 +81,13 @@ public class Plane {
         this.capacity = capacity;
     }
 
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Producer getProducer() {
+        return producer;
+    }
+
+    public void setProducer(Producer producer) {
+        this.producer = producer;
+    }
 }

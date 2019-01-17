@@ -21,6 +21,10 @@ public class PlaneManager {
         return em.find(Plane.class, id);
     }
 
+    public Plane getPlaneBySideNumber(String sideNumber){
+        return (Plane) em.createNamedQuery("plane.getBySideNumber").setParameter("sideNumber", sideNumber).getSingleResult();
+    }
+
     public Plane updatePlane(Plane transientPlane) {
         return em.merge(transientPlane);
     }
