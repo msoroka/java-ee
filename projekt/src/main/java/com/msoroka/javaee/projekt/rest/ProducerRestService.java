@@ -16,7 +16,6 @@ public class ProducerRestService {
     @EJB
     ProducerManager producerManager;
 
-
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -32,6 +31,14 @@ public class ProducerRestService {
         return producerManager.getProducer(id);
     }
 
+    @GET
+    @Path("/{producerId}/planes")
+    @Produces(MediaType.APPLICATION_JSON)
+    @SuppressWarnings("unchecked")
+    public List<Plane> getPlanesOfProducer(@PathParam("producerId") Long id){
+        return producerManager.getPlanesOfProducer(id);
+    }
+
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -39,6 +46,29 @@ public class ProducerRestService {
         producerManager.addProducer(producer);
 
         return Response.status(Response.Status.CREATED).build();
+    }
+
+    @PUT
+    @Path("/{producerId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateProducer(@PathParam("producerId") int id, Producer transientProducer) {
+        Producer producer = producerManager.getProducer(id);
+
+        producer.setName(transientProducer.getName());
+        producer.setYoe(transientProducer.getYoe());
+
+        producerManager.updateProducer(producer);
+
+        return Response.status(Response.Status.OK).build();
+    }
+    
+    @DELETE
+    @Path("/{producerId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteProducer(@PathParam("producerId") int id) {
+        producerManager.deleteProducer(id);
+
+        return Response.status(Response.Status.OK).build();
     }
 
     @GET

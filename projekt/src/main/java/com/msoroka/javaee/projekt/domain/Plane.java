@@ -82,7 +82,7 @@ public class Plane {
     }
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Producer getProducer() {
         return producer;
     }
