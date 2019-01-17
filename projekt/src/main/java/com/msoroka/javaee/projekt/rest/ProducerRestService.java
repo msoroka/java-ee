@@ -61,7 +61,7 @@ public class ProducerRestService {
 
         return Response.status(Response.Status.OK).build();
     }
-    
+
     @DELETE
     @Path("/{producerId}")
     @Produces(MediaType.APPLICATION_JSON)
