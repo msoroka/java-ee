@@ -1,11 +1,7 @@
 package com.msoroka.javaee.projekt.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-
 import javax.persistence.*;
-import javax.swing.text.View;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
