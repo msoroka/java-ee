@@ -1,6 +1,7 @@
 package com.msoroka.javaee.projekt.service;
 
 import com.msoroka.javaee.projekt.domain.Pilot;
+import com.msoroka.javaee.projekt.domain.Plane;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,8 +22,17 @@ public class PilotManager {
         return em.find(Pilot.class, id);
     }
 
+    public Pilot getPilotByLicenseNumber(String licenseNumber){
+        return (Pilot) em.createNamedQuery("pilot.byLicenseNumber").setParameter("number", licenseNumber).getSingleResult();
+    }
+
     public Pilot updatePilot(Pilot transientPilot) {
         return em.merge(transientPilot);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Plane> getAllPlanesByLicenceNumber(String licenseNumber) {
+        return em.createNamedQuery("pilot.getPlanesByLicenseNumber").setParameter("number", licenseNumber).getResultList();
     }
 
     public void deletePilot(long id){

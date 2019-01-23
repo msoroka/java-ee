@@ -11,7 +11,8 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "pilot.getAll", query = "Select p from Pilot p"),
         @NamedQuery(name = "pilot.deleteAll", query = "Delete from Pilot"),
-//        @NamedQuery(name = "pilot.getPlanesByLicenseNumber", query = "Select pl FROM Pilot p JOIN p.planes pl JOIN p.license l WHERE l.number = :number")
+        @NamedQuery(name = "pilot.byLicenseNumber", query = "SELECT p FROM Pilot p JOIN p.license l WHERE l.number = :number"),
+        @NamedQuery(name = "pilot.getPlanesByLicenseNumber", query = "SELECT pl FROM Pilot p JOIN p.planes pl JOIN p.license l WHERE l.number = :number")
 })
 public class Pilot {
 

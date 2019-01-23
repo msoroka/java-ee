@@ -10,7 +10,8 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(name = "plane.getAll", query = "Select p from Plane p"),
         @NamedQuery(name = "plane.deleteAll", query = "Delete from Plane"),
-        @NamedQuery(name = "plane.getBySideNumber", query = "SELECT p FROM Plane p WHERE p.sideNumber = :sideNumber")
+        @NamedQuery(name = "plane.getBySideNumber", query = "SELECT p FROM Plane p WHERE p.sideNumber = :sideNumber"),
+        @NamedQuery(name = "plane.getByProducerName", query = "SELECT p FROM Plane p JOIN p.producer pr WHERE pr.name = :name"),
 })
 public class Plane {
 

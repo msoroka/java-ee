@@ -1,6 +1,7 @@
 package com.msoroka.javaee.projekt.rest;
 
 import com.msoroka.javaee.projekt.domain.Pilot;
+import com.msoroka.javaee.projekt.domain.Plane;
 import com.msoroka.javaee.projekt.service.PilotManager;
 
 import javax.ejb.EJB;
@@ -28,6 +29,20 @@ public class PilotRestService {
     @Produces(MediaType.APPLICATION_JSON)
     public Pilot getPilot(@PathParam("pilotId") int id) {
         return pilotManager.getPilot(id);
+    }
+
+    @GET
+    @Path("/license-number/{licenseNumber}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Pilot getPlaneBySideNumber(@PathParam("licenseNumber") String licenseNumber) {
+        return pilotManager.getPilotByLicenseNumber(licenseNumber);
+    }
+
+    @GET
+    @Path("/planes/license/{licenseNumber}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Plane> getPlanesByProducerName(@PathParam("licenseNumber") String licenseNumber) {
+        return pilotManager.getAllPlanesByLicenceNumber(licenseNumber);
     }
 
     @POST

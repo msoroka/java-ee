@@ -37,6 +37,20 @@ public class PlaneRestService {
         return planeManager.getPlaneBySideNumber(sideNumber);
     }
 
+    @GET
+    @Path("/producer/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Plane> getPlanesByProducerName(@PathParam("name") String name) {
+        return planeManager.getPlanesByProducerName(name);
+    }
+
+    @GET
+    @Path("/model/{model}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Plane getPlanesOlderThanDate(@PathParam("model") String model) {
+        return planeManager.getPlaneByModelName(model);
+    }
+
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
