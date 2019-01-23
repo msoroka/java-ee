@@ -1,0 +1,979 @@
+{
+	"info": {
+		"_postman_id": "1d3e854c-1276-4bf9-903a-78eda9bb93bf",
+		"name": "projekt_javaee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Plane Smoke Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Plane",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"model\": \"A330\",\n\t\"sideNumber\": \"A330-XYZ123\",\n\t\"produceDate\": \"2018-01-01\",\n\t\"capacity\": 150\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Plane With Producer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"model\": \"777\",\n\t\"sideNumber\": \"777-XYZ123\",\n\t\"produceDate\": \"2018-01-01\",\n\t\"capacity\": 150,\n\t\"producer\": {\n\t\t\"name\": \"Boeing\",\n\t\t\"yoe\": \"2018-01-01\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Planes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Plane",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Plane By Side Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/side-number/A330-XYZ123",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"side-number",
+						"A330-XYZ123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Planes By Producer Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/producer/Cessna",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"producer",
+						"Cessna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Plane By Model Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/model/777",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"model",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Plane",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"A320\",\n    \"sideNumber\": \"A320-XYZ123\",\n    \"produceDate\": \"2017-01-01\",\n    \"capacity\": 250\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Plane",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Planes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/plane",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"plane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Producer Smoke Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Producer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Airbus\",\n\t\"yoe\": \"2018-01-01\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Producer With Planes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Cessna\",\n    \"yoe\": \"2018-01-01\",\n    \"planes\": [\n        {\n            \"model\": \"A12\",\n            \"sideNumber\": \"A12-XYZ123\",\n            \"produceDate\": \"2018-01-01\",\n            \"capacity\": 150\n        },\n        {\n            \"model\": \"A13\",\n            \"sideNumber\": \"A13-XYZ123\",\n            \"produceDate\": \"2018-01-01\",\n            \"capacity\": 150\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Producers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Producer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Producer Planes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer/2/planes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer",
+						"2",
+						"planes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Producer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Boeing\",\n    \"yoe\": \"2018-01-05\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Producer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/producer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"producer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pilot Smoke Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Pilots",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pilot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pilot By License Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot/license-number/JK1990a",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot",
+						"license-number",
+						"JK1990a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Pilots Planes By License Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot/planes/license/JK1990a",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot",
+						"planes",
+						"license",
+						"JK1990a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pilot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Jan\",\n\t\"lastName\": \"Kowalski\",\n\t\"birthDate\": \"1990-01-15\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pilot With Relations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Jan\",\n\t\"lastName\": \"Kowalski\",\n\t\"birthDate\": \"1990-01-15\",\n\t\"license\": {\n\t\t\"number\": \"JK1990a\",\n\t\t\"grantingDate\": \"2019-01-01\"\n\t},\n\t\"planes\": [\n\t\t{\n\t\t\t\"model\": \"F16\",\n\t\t\t\"sideNumber\": \"F16-XYZ123\",\n\t\t\t\"produceDate\": \"2018-01-01\",\n\t\t\t\"capacity\": 1,\n\t\t\t\"producer\": {\n\t\t\t\t\"name\": \"Army\",\n\t\t\t\t\"yoe\": \"1990-01-01\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"model\": \"F15\",\n\t\t\t\"sideNumber\": \"F15-XYZ123\",\n\t\t\t\"produceDate\": \"2018-01-01\",\n\t\t\t\"capacity\": 1,\n\t\t\t\"producer\": {\n\t\t\t\t\"name\": \"Army\",\n\t\t\t\t\"yoe\": \"1990-01-01\"\n\t\t\t}\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Pilot",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Dawid\",\n\t\"lastName\": \"Kowalski\",\n\t\"birthDate\": \"1991-01-15\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pilot",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Pilots",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/pilot",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"pilot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "License Smoke Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Licenses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add License",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"number\": \"DK1990\",\n    \"grantingDate\": \"2019-01-01\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update License",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"number\": \"DK1990123\",\n    \"grantingDate\": \"2019-01-01\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete License",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Licenses",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/license",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"license"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

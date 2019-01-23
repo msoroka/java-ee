@@ -46,5 +46,7 @@ public class LicenseTest {
                 body(license).
                 when().
                 post("/").then().assertThat().statusCode(201);
+
+        delete("/").then().assertThat().statusCode(200);
     }
 }
