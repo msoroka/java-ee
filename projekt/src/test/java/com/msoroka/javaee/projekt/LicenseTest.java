@@ -5,11 +5,8 @@ import com.msoroka.javaee.projekt.domain.License;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.transaction.Transactional;
 import javax.ws.rs.core.MediaType;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 import static com.jayway.restassured.RestAssured.delete;
 import static com.jayway.restassured.RestAssured.given;
@@ -47,6 +44,27 @@ public class LicenseTest {
                 when().
                 post("/").then().assertThat().statusCode(201);
 
+
         delete("/").then().assertThat().statusCode(200);
+    }
+
+
+    @Test
+    public void getAllLicenses() {
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                when().
+                get("/").then().assertThat().statusCode(200);
+
+    }
+
+
+    @Test
+    public void getLicense() {
+        given().
+                contentType(MediaType.APPLICATION_JSON).
+                when().
+                get("/99999").then().assertThat().statusCode(204);
+
     }
 }
