@@ -66,7 +66,7 @@ public class PlaneTest {
         given().
                 contentType(MediaType.APPLICATION_JSON).
                 when().
-                get("/99999").then().assertThat().statusCode(204);
+                get("/0").then().assertThat().statusCode(204);
 
     }
 }

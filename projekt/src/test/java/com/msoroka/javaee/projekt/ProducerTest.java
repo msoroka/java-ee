@@ -1,6 +1,5 @@
 package com.msoroka.javaee.projekt;
 
-import static com.jayway.restassured.RestAssured.delete;
 import static com.jayway.restassured.RestAssured.given;
 
 import com.jayway.restassured.RestAssured;
@@ -55,7 +54,7 @@ public class ProducerTest {
         given().
                 contentType(MediaType.APPLICATION_JSON).
                 when().
-                get("/99999").then().assertThat().statusCode(204);
+                get("/0").then().assertThat().statusCode(204);
 
     }
 }
