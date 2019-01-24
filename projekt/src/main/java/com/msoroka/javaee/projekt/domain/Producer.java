@@ -12,7 +12,8 @@ import java.util.List;
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "producer.getAll", query = "Select p from Producer p"),
-        @NamedQuery(name = "producer.getPlanesOfProducer", query = "Select pl from Producer p JOIN p.planes pl where p.id = :pId")
+        @NamedQuery(name = "producer.getPlanesOfProducer", query = "Select pl from Producer p JOIN p.planes pl where p.id = :pId"),
+        @NamedQuery(name = "producer.getProducerPlanes", query = "Select p.name, pl.model FROM Producer p JOIN p.planes pl WHERE p.name = :name")
 })
 public class Producer {
 

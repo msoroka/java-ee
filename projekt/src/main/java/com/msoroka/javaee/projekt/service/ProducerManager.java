@@ -31,6 +31,11 @@ public class ProducerManager {
     }
 
     @SuppressWarnings("unchecked")
+    public List<Object[]> getProducerPlanes(String name){
+        return em.createNamedQuery("producer.getProducerPlanes").setParameter("name", name).getResultList();
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Producer> getAllProducers(){
         return em.createNamedQuery("producer.getAll").getResultList();
     }

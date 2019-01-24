@@ -974,6 +974,31 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Plane Custom Json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/projekt/api/query/Cessna",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projekt",
+						"api",
+						"query",
+						"Cessna"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

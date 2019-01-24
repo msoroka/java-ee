@@ -1,7 +1,9 @@
 package com.msoroka.javaee.projekt.service;
 
 import com.msoroka.javaee.projekt.domain.License;
+import com.msoroka.javaee.projekt.domain.Pilot;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +14,9 @@ public class LicenseManager {
 
     @PersistenceContext
     EntityManager em;
+
+    @EJB
+    PilotManager pilotManager;
 
     public void addLicense(License license) {
         em.persist(license);
@@ -26,7 +31,13 @@ public class LicenseManager {
     }
 
     public void deleteLicense(long id){
-        em.remove(em.find(License.class, id));
+        License license = em.find(License.class, id);
+
+        Pilot pilot = pilotManager.getPilotByLicenseNumber(license.getNumber());
+
+        pilot.setLicense(null);
+
+        em.remove(license);
     }
 
     public void deleteAllLicenses(){

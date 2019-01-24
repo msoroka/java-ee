@@ -30,17 +30,6 @@ public class ProducerTest {
     }
 
     @Test
-    public void addProducer() {
-        Producer producer = new Producer(NAME, YOE);
-
-        given().
-                contentType(MediaType.APPLICATION_JSON).
-                body(producer).
-                when().
-                post("/").then().assertThat().statusCode(201);
-    }
-
-    @Test
     public void getAllProducers() {
         given().
                 contentType(MediaType.APPLICATION_JSON).
